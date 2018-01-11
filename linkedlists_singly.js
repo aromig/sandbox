@@ -93,7 +93,7 @@ SinglyList.prototype.nodeAt = function(position) {
     return currentNode;
 }
 
-// removeAt a node from the list based on position, returning the deleted node
+// Removes a node from the list based on position, returning the deleted node
 SinglyList.prototype.removeAt = function(position) {
     var currentNode = this.head,
         length = this._length,
@@ -108,7 +108,7 @@ SinglyList.prototype.removeAt = function(position) {
     if (position < 1 || position > length)
         throw new Error(message.notexist);
 
-    // if position is the head (first node)
+     // if position is the head (first node)
     if (position === 1) {
         this.head = currentNode.next;
         deletedNode = currentNode;
