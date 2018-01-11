@@ -39,7 +39,7 @@ SinglyList.prototype.insertAt = function(value, position) {
         length = this._length,
         count = 1,
         message = { notexist: 'Invalid position to insert at.',
-                    empty: 'List is empty. Use .add instead.' },
+                    empty: 'List is empty. Use .push instead.' },
         newNode = new Node(value),
         prevNode = null;
         
