@@ -1,7 +1,7 @@
 // Node struct
 
 function Node(data) {
-    this.data = data    // stores a value
+    this.data = data;   // stores a value
     this.next = null;   // points to the next node in a list
 }
 
