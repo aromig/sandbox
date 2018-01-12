@@ -112,6 +112,26 @@ DoublyList.prototype.removeAt = function(position) {
     return node;
 }
 
+// Mutates the list to be in reversed in order (not a copy)
+DoublyList.prototype.reverse = function() {
+    var _head = this.head,
+        currentNode = this.head,
+        next = null;
+
+    this.tail = currentNode;
+    
+    while (currentNode) {
+        next = currentNode.next;
+        currentNode.next = currentNode.previous;
+        currentNode.previous = next;
+        if (!next) {
+            this.head = currentNode;
+        }
+        currentNode = next;
+    }
+
+    return this;
+}
 
 // some tests
 var list = new DoublyList();
@@ -124,5 +144,6 @@ console.log(list);
 list.insertAt('Item 2.5', 3);
 console.log(list.nodeAt(3).value); // Item 2.5
 list.removeAt(3);
-console.log(list.head.next.next.next.previous.next); // Item 4 node
 console.log(list._length); // 5
+var reversed = list.reverse();
+console.log(reversed);

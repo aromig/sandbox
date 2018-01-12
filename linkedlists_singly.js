@@ -130,7 +130,35 @@ SinglyList.prototype.removeAt = function(position) {
 
     return deletedNode;
 }
+// Mutates the list to be in reversed in order (not a copy)
+SinglyList.prototype.reverse = function() {
+    if (!this.head || !this.head.next)
+        return this;
 
+    var nodes = [],
+        currentNode = this.head;
+
+    while (currentNode) {
+        nodes.push(currentNode);
+        currentNode = currentNode.next;
+    }
+
+    var reversed = new SinglyList();
+    reversed._length = this._length;
+
+    reversed.head = nodes.pop();
+    currentNode = reversed.head;
+
+    var node = nodes.pop();
+    while (node) {
+        node.next = null;
+        currentNode.next = node;
+        currentNode = currentNode.next;
+        node = nodes.pop();
+    }
+
+    return reversed;
+}
 
 // some tests
 var list = new SinglyList();                 // create new singly list
@@ -139,12 +167,13 @@ for (var i = 0; i < 5;) {                       // populate list
     console.log('+', list.push('Item ' + ++i))
 }
 
-console.log(JSON.stringify(list));           // display list as JSON to see everything
+/* console.log(JSON.stringify(list));           // display list as JSON to see everything
 console.log('?', list.nodeAt(4));            // show position 4 "Item 4"
 console.log('-', list.removeAt(4));          // removeAt position 4
 console.log('?', list.nodeAt(4));            // show position 4 "Item 5"
 console.log('+', list.push('Item 6'));        // add "Item 6" to end
 console.log(JSON.stringify(list));           // display list as JSON to see everything
 console.log('>', list.insertAt('Item 4', 4));// insert "Item 4" back into position 4
-console.log('?', list.nodeAt(4));            // show position 4 "Item 4"
+console.log('?', list.nodeAt(4));            // show position 4 "Item 4" */
 console.log(JSON.stringify(list));           // display list as JSON to see everything
+console.log(JSON.stringify(list.reverse()));
