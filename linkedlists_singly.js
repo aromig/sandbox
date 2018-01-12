@@ -163,9 +163,9 @@ SinglyList.prototype.reverse = function() {
 // some tests
 var list = new SinglyList();                 // create new singly list
 
-for (var i = 0; i < 5;) {                       // populate list
+/* for (var i = 0; i < 5;) {                       // populate list
     console.log('+', list.push('Item ' + ++i))
-}
+} */
 
 /* console.log(JSON.stringify(list));           // display list as JSON to see everything
 console.log('?', list.nodeAt(4));            // show position 4 "Item 4"
@@ -174,6 +174,52 @@ console.log('?', list.nodeAt(4));            // show position 4 "Item 5"
 console.log('+', list.push('Item 6'));        // add "Item 6" to end
 console.log(JSON.stringify(list));           // display list as JSON to see everything
 console.log('>', list.insertAt('Item 4', 4));// insert "Item 4" back into position 4
-console.log('?', list.nodeAt(4));            // show position 4 "Item 4" */
+console.log('?', list.nodeAt(4));            // show position 4 "Item 4"
 console.log(JSON.stringify(list));           // display list as JSON to see everything
-console.log(JSON.stringify(list.reverse()));
+console.log(JSON.stringify(list.reverse()));*/
+
+var list1 = new SinglyList();
+list1.push(1);
+list1.push(3);
+list1.push(10);
+list1.push(25);
+
+var list2 = new SinglyList();
+list2.push(5);
+list2.push(6);
+list2.push(9);
+list2.push(13);
+list2.push(50);
+
+// Merges 2 already sorted Singly Lists into 1 Singly List
+function merge(L1, L2) {
+    var merged = new SinglyList(),
+        n1 = L1.head,
+        n2 = L2.head;
+
+    while (n1 !== null && n2 !== null) {
+        if (n1.value <= n2.value) {
+            merged.push(n1.value);
+            n1 = n1.next;
+        } else {
+            merged.push(n2.value);
+            n2 = n2.next;
+        }
+    }
+
+    if (n1 === null) {
+        while (n2 !== null) {
+            merged.push(n2.value);
+            n2 = n2.next;
+        }
+    } else {
+        while (n1 !== null) {
+            merged.push(n1.value);
+            n1 = n1.next;
+        }
+    }
+
+    return merged;
+}
+
+console.log(JSON.stringify(merge(list1, list2)));
