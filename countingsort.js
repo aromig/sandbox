@@ -22,8 +22,8 @@ var arr = [46633, 10992, 4458, 39652, 6332, 6645, 29321, 37428, 23619, 28186, 31
 
 var max = Math.max.apply(null, arr);
 
-console.time("sort");
+console.time("countingSort");
 var sorted = countingSort(arr, max);
-console.timeEnd("sort");
+console.timeEnd("countingSort");
 
-console.log(JSON.stringify(sorted));
+//console.log(JSON.stringify(sorted));
