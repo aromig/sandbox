@@ -22,5 +22,9 @@ function dutchNatlFlag(arr) {
 }
 
 var arr = [2,1,1,0,1,2,0,0,1,2,1,0,2,0];
+
+console.time("sort");
 var dnf = dutchNatlFlag(arr);
-console.log(dnf);
+console.timeEnd("sort");
+
+console.log(JSON.stringify(dnf));
