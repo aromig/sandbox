@@ -64,6 +64,14 @@ Queue.prototype.dequeue = function() {
     return deleted;
 }
 
+Queue.prototype.first = function() {
+    return this._storage[this._oldestIndex];
+}
+
+Queue.prototype.last = function() {
+    return this._storage[this._newestIndex-1];
+}
+
 var shield = new Queue();
 shield.enqueue('Phil');
 shield.enqueue('Melinda');
@@ -74,9 +82,13 @@ shield.enqueue('Jemma');
 console.log();
 console.log(shield);
 console.log('size:', shield.size());
+console.log('first:', shield.first());
+console.log('last:', shield.last());
 console.log('-', shield.dequeue());
 console.log('-', shield.dequeue());
 console.log('-', shield.dequeue());
 console.log();
 console.log(shield);
 console.log('size:', shield.size());
+console.log('first:', shield.first());
+console.log('last:', shield.last());
